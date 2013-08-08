@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+}
+
+#header{
+    min-height: 60px;
+    min-width: 1000px;
+}
+
+#content {
+    clear: both;
+    min-height: 400px;
+    min-width: 1000px;
+}
+
+#left_header {
+    min-height: 60px;    
+    background-color: #000000;
+    float : left;
+    width : 80%;
+}
+
+#right_header {
+    min-height: 60px;    
+    background-color: #000000;
+    float : right;
+    width: 20%;
+}
+
+#left_content {
+    float : left;
+    min-height: 400px;    
+    width: 80%;
+}
+
+#right_content {
+    float : right;
+    min-height: 400px;    
+    width: 20%;
+    position: relative;
+    background-color: #C0C0C0;   
+}
+
+#logo {
+    padding-top: 5px;
+    float: left;
+}
+
+#search_box {
+    float : right;
+    padding: 10px;
+}
+
+#placeSearch {
+    /* height: 30px; */
+    width: 300px;
+}
+
+#publishBtn {
+    float : right;
+    padding: 10px;
+    /* height: 30px; */
+}
+
+#meetingText {
+    float : left;
+    color: #fff;
+    padding: 10px;
+}
+
+#map_canvas {
+    height:100%
+}
+
+#itinerary {
+   border : 1px SOLID #fff;
+   padding: 10px;
+   max-height: 285px;
+   overflow-x: none;
+   overflow-y: scroll;
+}
+
+#textBox {
+    border : 1px SOLID #fff;
+    position: absolute;
+    bottom : 0;
+}
+
+#addDescriptionTB {
+    width : 90%;
+    margin : 10px;    
+}
+
+.itinItem {
+    padding: 10px;
+    background-color: #123456;
+    color : #fff;
+    border-radius: 8px;
+   
+}
+
