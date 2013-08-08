@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <!-- /*
+ * Copyright (c) 2011 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy
+ * of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */ -->
+  <ModulePrefs title="MY_APP">
+    <Require feature="rpc"/>
+    <Require feature="views"/>
+  </ModulePrefs>
+  <Content type="html"><![CDATA[
+<!DOCTYPE html>
+<!-- The hangout API JavaScript. Always include this first -->
+<script src="http://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
+<link rel="stylesheet" href="YOUR_HOST_URL/app.css">      
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="YOUR_HOST_URL/jquery-1.9.1.min.js" />
+<script type="text/javascript" src="YOUR_HOST_URL/app.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&sensor=false"></script>      
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places,panoramio"></script>      
+        
+<script type="text/javascript">
+      $(document).ready(function(){
+                   // Google Places Autocomplete stuff
+                   var input = document.getElementById('placeSearch'); 
+                   var options = {
+                           types: ['geocode']
+                   };
+                   autocomplete = new google.maps.places.Autocomplete(input, options);
+                   google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                       // API return object
+                       var place = autocomplete.getPlace();
+                       console.log(place);
+                       // alert(place.geometry.location.lat()+" "+place.geometry.location.lng());
+                       addMarker(place.geometry.location.lat(),place.geometry.location.lng());
+                   });
+              });
+      
+      function addMarker(latitude,longitude) {
+                  var myLatlng = new google.maps.LatLng(latitude,longitude);
+                  var mapOptions = {
+                    zoom: 8,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                  }
+                  var map = new google.maps.Map(document.getElementById("left_content"), mapOptions);
+
+                  var marker = new google.maps.Marker({
+                      position: myLatlng,
+                      map: map
+                  });
+              }
+      
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("left_content"),
+            mapOptions);        
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+</script>      
+
+<!-- MAIN BODY HERE -->
+
+         <div id="header">
+            <div id="left_header">
+                <div id="logo"></div>
+                <div id="search_box">
+                    <input type="text" id="placeSearch" placeholder="Search a place" />
+                    <input type="button" class="btn btn-danger" value="+" />
+                </div>
+            </div>
+            <div id="right_header">
+                <div id="meetingText">
+                    Meeting Notes
+                </div>
+                <div id="publishBtn">
+                    <input type="button" class="btn btn-success" value="Publish" />
+                </div>
+                
+                
+            </div>            
+        </div>
+        
+        <div id="content">
+            <div id="left_content"></div>
+            <div id="right_content">
+                <div id="itinerary">
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Some more text to check inflation</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="itinItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>                    
+                </div>
+                <div id="textBox">
+                    <textarea id="addDescriptionTB"></textarea>
+                </div>
+            </div>
+        </div>
+      
+<!-- MAIN BODY ENDS HERE -->      
+]]></Content>
+</Module>
